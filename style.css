@@ -1,0 +1,450 @@
+/* Define CSS variables for theme customization */
+:root {
+  --fontColor: white;
+  --boxColor: #ff69b4;
+  --fontFamily: 'Rubik', sans-serif;
+}
+
+/* Font face definitions */
+@font-face {
+  font-family: 'Rubik';
+  src: url('fonts/Rubik-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('fonts/Rubik-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Global styles */
+body {
+  background-color: #000;
+  background-image: url('assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: var(--fontFamily);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Debug log */
+#debug-log {
+  position: fixed;
+  top: 8px;
+  left: 12px;
+  font-size: 10px;
+  background: black;
+  color: lime;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Game area */
+#game-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* Falling gummies */
+.gummy {
+  position: absolute;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(120vh);
+  }
+}
+
+/* Buttons */
+button {
+  padding: 16px 32px;
+  margin: 12px;
+  background-color: var(--boxColor, #ff69b4);
+  color: var(--fontColor, white);
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px #cc588f;
+  transition: transform 0.2s;
+  z-index: 2;
+}
+
+button:hover {
+  background-color: #ff85c1;
+  transform: scale(1.05);
+}
+
+#game-area {
+  text-align: center;
+  margin-top: 60px;
+}
+#gummy-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 720px;
+  pointer-events: none;
+  z-index: 1;
+}
+.text-box {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  text-align: center;
+  margin: 30px auto;
+  font-size: 13px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  z-index: 2;
+  max-width: 80%;
+}
+#timer-bar {
+  height: 12px;
+  border-radius: 6px;
+  background: white;
+  width: 0%;
+  transition: width 1s linear;
+}
+#timer-box {
+  background: #ff69b4;
+  padding: 12px;
+  margin-top: 20px;
+}
+#leaderboard-list {
+  text-align: left;
+  margin-top: 20px;
+}
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffffdd;
+  color: #333;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+.leaderboard-rank {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  width: 48px;
+}
+.leaderboard-name {
+  text-align: center;
+  flex: 1;
+}
+.leaderboard-guess {
+  font-size: 20px;
+  text-align: right;
+}
+.leaderboard-label {
+  font-size: 10px;
+  font-weight: normal;
+  color: #888;
+}
+.hidden {
+  display: none;
+}
+
+.text-box, button, #timer-box, #leaderboard-box {
+  margin: 12px auto;
+  text-align: center;
+}
+
+#leaderboard-list {
+  width: 100%;
+  max-width: 600px;
+}
+
+#timer-box {
+  width: 60%;
+  max-width: 800px;
+  background-color: #eee;
+  border: 2px solid #cc3388;
+  height: 20px;
+  margin: 12px auto;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#timer-bar {
+  background-color: #ff66aa;
+  height: 100%;
+  width: 100%;
+  transition: width 1s linear;
+}
+
+#leaderboard-box {
+  width: 60%;
+  max-width: 800px;
+}
+
+#prompt-text {
+  margin-top: 16px;
+}
+
+#timer-box {
+  width: 60%;
+  max-width: 800px;
+  margin: 12px auto;
+  position: relative;
+  border: 2px solid #cc3388;
+  background-color: #eee;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+#timer-bar {
+  background-color: #ff66aa;
+  height: 100%;
+  width: 100%;
+  transition: none;
+}
+
+#leaderboard-box {
+  width: 60%;
+  max-width: 800px;
+  margin: 12px auto;
+  text-align: center;
+}
+
+button#start-btn, button#restart-btn {
+  font-size: 24px;
+  padding: 18px 36px;
+  border-radius: 12px;
+  background-color: #ff66aa;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#timer-box.hidden {
+  display: none !important;
+}
+
+#leaderboard-list {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leaderboard-entry {
+  width: 60%;
+  max-width: 800px;
+  margin: 6px 0;
+  background: #ffccf1;
+  border: 2px solid #cc3388;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+#winner-box, #leaderboard-box {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#timer-box, #answer-box {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#prompt-text, #answer-box, #winner-box {
+  font-size: 200% !important;
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+}
+
+#winner-name {
+  font-size: 200% !important;
+  text-align: center;
+  display: block;
+}
+
+.leaderboard-entry {
+  font-size: 160% !important;
+  padding: 20px;
+  border-radius: 14px;
+  background: white;
+  border: 12px solid #ff66aa;
+  color: white !important;
+}
+
+.leaderboard-rank,
+.leaderboard-name,
+.leaderboard-guess,
+.leaderboard-label {
+  color: white !important;
+}
+
+#prompt-text,
+#answer-box,
+#winner-box,
+#leaderboard-box {
+  font-size: 400% !important;
+  font-family: 'Rubik', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+#winner-name {
+  font-size: 400% !important;
+  text-align: center;
+  display: block;
+}
+
+.leaderboard-entry {
+  color: #333 !important;
+}
+
+.leaderboard-rank,
+.leaderboard-name,
+.leaderboard-guess,
+.leaderboard-label {
+  color: #333 !important;
+}
+
+.text-box,
+#winner-box,
+#answer-box,
+#timer-box,
+#leaderboard-box {
+  background-color: var(--boxColor, #ff66aa);
+}
+
+#winner-box {
+  font-size: 160% !important; /* Reduced size by ~60% */
+}
+
+#leaderboard-box h2 {
+  font-size: 400%;
+  color: var(--fontColor, white);
+  margin-bottom: 20px;
+}
+
+.leaderboard-entry {
+  color: #333 !important;
+  font-size: 160% !important;
+  padding: 20px;
+  border-radius: 14px;
+  background: white;
+  border: 12px solid var(--boxColor, #ff66aa);
+  width: 60%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.leaderboard-name {
+  font-size: 50% !important; /* reduce streamer/chatter name size */
+  word-wrap: break-word;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.leaderboard-name {
+  font-size: 100% !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.leaderboard-rank,
+.leaderboard-name,
+.leaderboard-guess {
+  font-size: 24px !important;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  flex: 1;
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 12px solid var(--box-color);
+  background: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border-radius: 12px;
+  font-family: var(--font-family);
+}
+
+.leaderboard-rank,
+.leaderboard-name,
+.leaderboard-guess {
+  font-size: 24px;
+  color: var(--font-color);
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+.leaderboard-label {
+  font-size: 12px;
+  color: #444;
+  margin-top: 2px;
+}
+
+#leaderboard-list {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Connection Status */
+#connection-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--fontColor, white);
+  padding: 20px 40px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+}

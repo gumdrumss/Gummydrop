@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gummy Drop Game</title>
+
+  <!-- Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-area">
+    <!-- Connection Status -->
+    <div id="connection-status" class="text-box">
+      Connecting to Streamer.bot...
+    </div>
+
+    <button id="start-btn" class="hidden" aria-label="Start Game">Start Game</button>
+    <div id="gummy-container"></div>
+
+    <div id="prompt-text" class="hidden">Start Guessing!</div>
+    <div id="timer-box" class="text-box hidden">
+      <div id="timer-bar"></div>
+    </div>
+    <div id="answer-box" class="text-box hidden">
+      Correct Answer: <span id="correct-count"></span>
+    </div>
+    <div id="winner-box" class="text-box hidden">
+      <span id="winner-name">Streamer</span>
+    </div>
+    <div id="leaderboard-box" class="text-box hidden">
+      <h3>Leaderboard</h3>
+      <div id="leaderboard-list"></div>
+    </div>
+    <button id="restart-btn" class="hidden" aria-label="Restart Game">Restart</button>
+  </div>
+
+  <!-- Streamer.bot API -->
+  <script src="https://cdn.jsdelivr.net/npm/streamer.bot-api@latest/dist/streamer.bot-api.min.js"></script>
+
+  <!-- Game Scripts -->
+  <script src="config.js" defer></script>
+  <script src="game.js" defer></script>
+</body>
+</html>
+
